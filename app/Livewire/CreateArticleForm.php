@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Article;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
@@ -26,7 +27,7 @@ public function save()
         'description' => $this->description,
         'price' => $this->price,
         'category_id' => $this->category,
-        'user_id' => Auth :: id()
+        'user_id' => Auth::id()
 
     ]);
 

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Article;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Support\Facades\Request;
 
 
 class ArticleController extends Controller implements HasMiddleware
@@ -20,4 +22,20 @@ class ArticleController extends Controller implements HasMiddleware
     {
         return view('article.create');
     }
+    public function store(Request $request)
+    {
+       
+    $this->article = Article::create([
+        'title' => $this->title,
+        'description' => $this->description,
+        'price' => $this->price,
+    ]);
+          return view('submit.article');
+       
+         session()->flash('success','Articolo creato correttamente');
+         $this->reset();
+    }
+     
+    
 }
+

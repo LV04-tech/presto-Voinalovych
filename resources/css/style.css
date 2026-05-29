@@ -1,3 +1,33 @@
+*{
+  font-family: "EB Garamond", serif;
+}
+
 .height-custom {
   min-height: 60vh;
+}
+
+
+/* navbar  */
+.navbar{
+  background: rgb(214, 216, 168);
+color: rgb(209, 153, 162);
+}
+
+.angle{
+  font-family:  "Bebas Neue", sans-serif;
+  
+}
+
+/* form  */
+.form{
+  border: 3px solid #D6D8A8;
+}
+.bott{
+  border: 4px 2px 2px #D6D8A8;
+}
+
+/* login  */
+.log{
+  border:3px solid #D6D8A8;
+  background-color: rgb(221, 221, 221) ;
 }
