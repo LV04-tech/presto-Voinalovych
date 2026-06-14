@@ -15,7 +15,9 @@ class Article extends Model
         'description', 
         'price', 
         'category_id', 
-        'user_id'
+        'user_id',
+        'article'
+         
     ];
 
  public function user(): BelongsTo

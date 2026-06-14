@@ -10,8 +10,7 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        if(Schema::hasTable('articles')) return;  
+    {  
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string('title');
@@ -19,7 +18,7 @@ return new class extends Migration
             $table->float('price', 8, 2);
             // relazione con Category 
             $table->unsignedBigInteger('category_id')->nullable();
-            $table->foreign('category_id')->reference('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('categories');
             // relazione con User 
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->reference('id')->on('users');

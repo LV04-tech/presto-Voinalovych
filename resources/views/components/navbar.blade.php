@@ -11,11 +11,25 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{{route('homepage')}}">Home</a>
         </li>
+      
+      
         <li class="nav-item">
-          <a class="nav-link" href="#"></a>
+          <a class="nav-link" href="#">Tutti gli articoli</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">I miei articoli</a>
+        <li class="nav-item dropdpwn">
+          <a class="nav-link dropdpwn-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Categorie
+          </a>
+          <ul class="dopdown-menu">
+            @foreach ($categories as $category)
+            <li><a class="dropdown-item" 
+              href="{{ route('byCatgory', ['category' => $category]) }}">{{ $category->name }}</a>
+            </li>
+              @if (!$loop->last)
+                  <hr class="dropdwn-divider">
+              @endif  
+            @endforeach
+          </ul>
         </li>
          
         
@@ -38,6 +52,9 @@
 
          <li class="nav-item">
           <a class="nav-link" href="{{route('create.article')}}">Crea Articolo</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a  class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle ></a>
         </li>
          <li class="nav-item">
           <a class="nav-link" href="#">Benvenut*{{Auth::user()->name}}</a>
