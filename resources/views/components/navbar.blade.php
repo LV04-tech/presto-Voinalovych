@@ -16,17 +16,17 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Tutti gli articoli</a>
         </li>
-        <li class="nav-item dropdpwn">
-          <a class="nav-link dropdpwn-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Categorie
           </a>
           <ul class="dopdown-menu">
             @foreach ($categories as $category)
             <li><a class="dropdown-item" 
-              href="{{ route('byCatgory', ['category' => $category]) }}">{{ $category->name }}</a>
+              href="{{ route('byCategory', ['category' => $category]) }}">{{ $category->name }}</a>
             </li>
               @if (!$loop->last)
-                  <hr class="dropdwn-divider">
+                  <hr class="dropdown-divider">
               @endif  
             @endforeach
           </ul>
