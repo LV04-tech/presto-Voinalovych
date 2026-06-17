@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->boolen('is_revisor')->default(false);
+            $table->boolean('is_revisor')->default(false);
         });
     }
 
