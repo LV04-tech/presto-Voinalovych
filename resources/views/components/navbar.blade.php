@@ -11,8 +11,6 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{{route('homepage')}}">Home</a>
         </li>
-      
-      
         <li class="nav-item">
           <a class="nav-link" href="#">Tutti gli articoli</a>
         </li>
@@ -25,13 +23,13 @@
             <li><a class="dropdown-item" 
               href="{{ route('byCategory', ['category' => $category]) }}">{{ $category->name }}</a>
             </li>
-              @if (!$loop->last)
-                  <hr class="dropdown-divider">
-              @endif  
+            @if (!$loop->last)
+            <hr class="dropdown-divider">
+            @endif  
             @endforeach
           </ul>
         </li>
-         
+        
         
         {{-- Utente NON è autenticato --}}
         @guest
@@ -42,30 +40,44 @@
           <a class="nav-link" href="{{route('login')}}">Accedi</a>
         </li>
         @endguest
-
-         <li class="nav-item">
+        
+        <li class="nav-item">
           <a class="nav-link" href="#">Contatti</a>
         </li>
-
+        {{-- fine utente NON AUTH  --}}
+        
         {{-- Utente autenticato  --}}
         @auth
+        
+        {{-- zona revisore  --}}
+        @if (Auth::user()->is_revisor)
+        <li class="nav-item">
+          <a class="nav-link btn btn-outline-success btn-sm position-relative w-sm-25"
+          href=" {{ route('revisor.index') }}">Zona revisore
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{ \App\Models\Article::toBeRevisedCount() }}
 
-         <li class="nav-item">
-          <a class="nav-link" href="{{route('create.article')}}">Crea Articolo</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a  class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle ></a>
-        </li>
-         <li class="nav-item">
-          <a class="nav-link" href="#">Benvenut*{{Auth::user()->name}}</a>
-        </li>
-         <form class="nav-link" action="{{route('logout')}}" method="POST">
-            <button type="submit">Logout</button>
-            @csrf
-          </form>
-        @endauth  
-      </ul>
-    </div>
+          </span>
+        </a>
+      </li>
+      @endif
+      {{-- fine zona revisore  --}}
+      
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('create.article')}}">Crea Articolo</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a  class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle ></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Benvenut*{{Auth::user()->name}}</a>
+      </li>
+      <form class="nav-link" action="{{route('logout')}}" method="POST">
+        <button type="submit">Logout</button>
+        @csrf
+      </form>
+      @endauth  
+    </ul>
   </div>
+</div>
 </nav>
 {{-- fine navbar  --}}
