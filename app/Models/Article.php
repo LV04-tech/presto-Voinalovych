@@ -6,10 +6,11 @@ use App\Models\Article;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Laravel\Scout\Searchable;
 
 class Article extends Model
 {
-    use HasFactory;
+    use Searchable;
     
     protected $fillable = [
         'title', 
@@ -42,5 +43,19 @@ public function category(): BelongsTo
    {
     return Article::where('is_accepted', null)->count();
    }
+
+
+//    un'istanza di modello Eloquent in un
+// array che può essere indicizzato da un motore di ricerca full-text
+
+   public function toSearchableArray()
+{
+    return [
+        'id' =>$this->id,
+        'title' =>$this->title,
+        'description' =>$this->description,
+        'category'=>$this->category
+    ];
+}
 
 }

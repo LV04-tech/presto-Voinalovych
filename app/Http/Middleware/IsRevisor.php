@@ -9,11 +9,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class IsRevisor
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  Closure(Request): (Response)  $next
-     */
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::check() && Auth::user()->is_revisor) {

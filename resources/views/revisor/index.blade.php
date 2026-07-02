@@ -40,6 +40,7 @@
         {{ session('message') }}
     </div>
     @endif
+    {{-- accept o reject  --}}
       <div class="d-flex pb-4 justify-content-around">
         <form action="{{ route('reject', ['article' => $article_to_check]) }}" method="POST">
           @csrf
@@ -52,6 +53,7 @@
           <button class="btn btn-success py-2 px-5 fw-bold ">Accetta</button>
           </form>
         </div>
+        {{-- fine accept o reject  --}}
       </div>
     </div>
   @else
